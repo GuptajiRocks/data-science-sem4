@@ -57,8 +57,8 @@ def visualize_text():
     plt.show()
 
 if __name__ == "__main__":
-    # visualize_tabular_data()
+    visualize_tabular_data()
     visualize_image()
-    # visualize_3d_image()
-    # play_video()
-    # visualize_text()
+    visualize_3d_image()
+    #play_video()
+    visualize_text()
