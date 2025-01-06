@@ -35,15 +35,13 @@ def visualize_tabular_data():
     plt.title('Histogram')
     plt.show()
 
-# Image Visualization
 def visualize_image():
-    img = cv2.imread('image.jpg')
+    img = cv2.imread('Practical\\jan6\\image.jpg')
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     plt.imshow(img_rgb)
     plt.title('Image Display')
     plt.show()
 
-# 3D Image Visualization
 def visualize_3d_image():
     X, Y = np.meshgrid(range(10), range(10))
     Z = np.sin(X) * np.cos(Y)
@@ -58,14 +56,28 @@ def play_video():
     clip.preview()
 
 def play_audio():
-    audio = AudioSegment.from_file('Practical\\jan6\\audio.mp3')
-    play(audio)
+    try:
+        audio = AudioSegment.from_file('D:\\Bennett University\\Sem 4\\CSET228 - Data Mining and Predictive Modelling\\data-science-sem4\\Practical\\jan6\\audio.mp3')
+        print("Playing audio...")
+        audio.export("temp_audio.wav", format="wav")
 
-    with contextlib.closing(wave.open('audio.wav','r')) as wav_file:
-        frames = wav_file.getnframes()
-        rate = wav_file.getframerate()
-        duration = frames / float(rate)
-        print(f"Audio Duration: {duration} seconds")
+        with contextlib.closing(wave.open("temp_audio.wav", 'r')) as wav_file:
+            frames = wav_file.getnframes()
+            rate = wav_file.getframerate()
+            duration = frames / float(rate)
+            print(f"Audio Duration: {duration} seconds")
+
+        plt.figure(figsize=(10, 6))
+        audio_data = np.frombuffer(audio.raw_data, dtype=np.int16)
+        plt.specgram(audio_data, Fs=rate, NFFT=1024, noverlap=512, cmap='viridis')
+        plt.title('Spectrogram')
+        plt.xlabel('Time (s)')
+        plt.ylabel('Frequency (Hz)')
+        plt.colorbar(label='Intensity (dB)')
+        plt.show()
+    except Exception as e:
+        print(f"Error in processing audio: {e}")
+
 
 def visualize_text():
     with open('Practical\\jan6\\text.txt', 'r') as file:
@@ -79,8 +91,8 @@ def visualize_text():
 
 if __name__ == "__main__":
     # visualize_tabular_data()
-    # visualize_image()
+    visualize_image()
     # visualize_3d_image()
     # play_video()
-    play_audio()
+    # play_audio()
     # visualize_text()
