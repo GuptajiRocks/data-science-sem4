@@ -1,0 +1,6 @@
+Finding non trivial and useful patterns in hideen data - Definition of data mining
+
+OLAP - Online Analytical Processing - Need to refer a book - (OLAP and Data Warehousing)
+
+Historical Data is stored in Data Warehouse.
+
