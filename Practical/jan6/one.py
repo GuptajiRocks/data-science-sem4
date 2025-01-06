@@ -5,15 +5,9 @@ import seaborn as sns
 from wordcloud import WordCloud
 import cv2
 from moviepy.editor import VideoFileClip
-from pydub import AudioSegment
-from pydub.playback import play
-import wave
-import contextlib
-from mpl_toolkits.mplot3d import Axes3D
 
-# Tabular Data Visualization
+
 def visualize_tabular_data():
-    # Reading CSV
     df = pd.read_csv('Practical\\jan6\\data.csv')
     print("CSV Data Properties:", df.info())
 
