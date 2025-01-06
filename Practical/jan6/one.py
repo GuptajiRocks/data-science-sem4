@@ -17,19 +17,16 @@ def visualize_tabular_data():
     df = pd.read_csv('Practical\\jan6\\data.csv')
     print("CSV Data Properties:", df.info())
 
-    # Line Plot
     plt.figure(figsize=(10, 6))
     sns.lineplot(data=df)
     plt.title('Line Plot')
     plt.show()
 
-    # Bar Plot
     plt.figure(figsize=(10, 6))
     sns.barplot(x=df.columns[0], y=df.columns[1], data=df)
     plt.title('Bar Plot')
     plt.show()
 
-    # Histogram
     plt.figure(figsize=(10, 6))
     df.hist()
     plt.title('Histogram')
@@ -55,30 +52,6 @@ def play_video():
     clip = VideoFileClip('video.mp4')
     clip.preview()
 
-def play_audio():
-    try:
-        audio = AudioSegment.from_file('D:\\Bennett University\\Sem 4\\CSET228 - Data Mining and Predictive Modelling\\data-science-sem4\\Practical\\jan6\\audio.mp3')
-        print("Playing audio...")
-        audio.export("temp_audio.wav", format="wav")
-
-        with contextlib.closing(wave.open("temp_audio.wav", 'r')) as wav_file:
-            frames = wav_file.getnframes()
-            rate = wav_file.getframerate()
-            duration = frames / float(rate)
-            print(f"Audio Duration: {duration} seconds")
-
-        plt.figure(figsize=(10, 6))
-        audio_data = np.frombuffer(audio.raw_data, dtype=np.int16)
-        plt.specgram(audio_data, Fs=rate, NFFT=1024, noverlap=512, cmap='viridis')
-        plt.title('Spectrogram')
-        plt.xlabel('Time (s)')
-        plt.ylabel('Frequency (Hz)')
-        plt.colorbar(label='Intensity (dB)')
-        plt.show()
-    except Exception as e:
-        print(f"Error in processing audio: {e}")
-
-
 def visualize_text():
     with open('Practical\\jan6\\text.txt', 'r') as file:
         text = file.read()
@@ -94,5 +67,4 @@ if __name__ == "__main__":
     visualize_image()
     # visualize_3d_image()
     # play_video()
-    # play_audio()
     # visualize_text()
