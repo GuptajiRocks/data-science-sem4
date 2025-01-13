@@ -45,4 +45,6 @@ def print_gauss():
     print(sdf)
     print(pd.DataFrame(sdf))
 
+print_gauss
+print_binarize
 print_gauss()
