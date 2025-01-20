@@ -14,7 +14,7 @@ def percentf():
 def compare_add():
     tot = df["Salary"].sum()
     df["Salary Percentage"] = round(((df["Salary"]/tot)*100), 2)
-    print(df)
+    print(df.sort_values(by="Salary", ascending=True))
 
 compare_add()
 
