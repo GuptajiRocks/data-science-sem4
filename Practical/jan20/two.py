@@ -14,7 +14,7 @@ def parts():
     print(df.isna().sum())
 
 unrem = df.drop(columns=["id", "Unnamed: 32"], errors="ignore")
-print(unrem.isna().sum())
+#print(unrem.isna().sum())
 
 X = unrem.drop(columns=["diagnosis"])
 y = unrem["diagnosis"]
